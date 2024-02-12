@@ -1,4 +1,8 @@
-// GameLogic.js
+/**
+ * \author  Brigham Baker
+ * \file    GameLogic.js
+ * \brief   contains the game logic for how the game will work
+ **/
 import { GAME_DIFFICULTIES } from './Constants';
 
 // Initializes the game board based on the selected difficulty
@@ -31,7 +35,7 @@ export const initializeBoard = (difficulty) => {
 
 // Reveals the cell at the given row and column
 export const revealCell = (board, row, col) => {
-    // Create a deep copy of the board to avoid direct state mutation
+    
     const newBoard = board.map(currentRow => [...currentRow]);
     const cell = newBoard[row][col];
 

@@ -1,3 +1,9 @@
+/**
+ * \author  Brigham Baker
+ * \file    EndScreen.js
+ * \brief   this file details how the end screen will look. Gives parameters for which end screen message you will receive.
+ **/
+
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
@@ -10,13 +16,13 @@ const EndScreen = ({ route, navigation }) => {
     } else if (endReason === 'lose') {
         message = "Game Over! You hit a mine.";
     } else if (endReason === 'quit') {
-        message = "Chicken!. Better luck next time!";
+        message = "Chicken! Better luck next time!";
     }
 
-    const handleRestart = () => {
+    { /** const handleRestart = () => {
         // Navigate back to the GameScreen or reset the game state
         navigation.navigate('Game');
-    };
+    }; **/}
 
     const handleGoToMenu = () => {
         // Navigate back to the HomeScreen
@@ -28,7 +34,7 @@ const EndScreen = ({ route, navigation }) => {
             <Text style={styles.message}>{message}</Text>
             <Text style={styles.score}>Your Score: {score}</Text>
             <View style={styles.buttonContainer}>
-                <Button title="Restart" onPress={handleRestart} />
+                {/** <Button title="Restart" onPress={handleRestart} />**/}
                 <Button title="Main Menu" onPress={handleGoToMenu} />
             </View>
         </View>

@@ -1,3 +1,9 @@
+/**
+ * \author  Brigham Baker
+ * \file    GameScreen.js
+ * \brief   the game screen. it handles the board, and interactions with the board, and determines how the game ends
+ **/
+
 import React, { useState, useEffect } from 'react';
 import {
     Button, View, Text, TouchableOpacity,
@@ -25,15 +31,13 @@ const GameScreen = ({ route, navigation }) => {
         const { board: newBoard, gameOver, win } = revealCell(board, row, col);
         const cell = newBoard[row][col];
 
-        // Since revealCell marks the cell as revealed, check if it's not a mine to update the score.
-        // The check for !cell.isRevealed is no longer necessary here since revealCell already handled it.
+        // check if it's not a mine to update the score.
         if (!cell.isMine) {
             setScore((prevScore) => prevScore + currentPoints);
             setCurrentPoints(currentPoints * 2); // Double the points for the next safe cell
         } else {
             // If a mine is hit, reset points and handle game over scenario
             setCurrentPoints(1);
-            // Optionally, handle gameOver logic here as well
         }
 
         setBoard(newBoard); // Update the board state to trigger a re-render
@@ -42,7 +46,7 @@ const GameScreen = ({ route, navigation }) => {
             setGameOver(gameOver);
             setWin(win);
             endGame(gameOver, win);
-            setCurrentPoints(1); // Reset for a new game
+            setCurrentPoints(1);
         }
     };
 

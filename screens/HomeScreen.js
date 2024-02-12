@@ -1,3 +1,10 @@
+/**
+ * \author  Brigham Baker
+ * \file    HomeScreen.js
+ * \brief   contains the code for the home screen. Shows title, has an instruction pop up and Difficulty selector.
+ **/
+
+
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 
