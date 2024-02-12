@@ -7,6 +7,9 @@ import { initializeBoard, revealCell, checkWin } from '../utilities/GameLogic';
 
 const GameScreen = ({ route, navigation }) => {
     const { difficulty } = route.params;
+    if (!difficulty) {
+        console.log('Difficulty is undefined')
+    }
     const [board, setBoard] = useState([]);
     const [gameOver, setGameOver] = useState(false);
     const [win, setWin] = useState(false);
@@ -45,9 +48,8 @@ const GameScreen = ({ route, navigation }) => {
 
 
     const endGame = (gameOver, win) => {
-        const title = win ? 'Congratulations!' : 'Game Over';
-        const message = win ? 'You have cleared all mines.' : 'You hit a mine.';
-        Alert.alert(title, message, [{ text: 'OK', onPress: () => navigation.goBack() }]);
+        let endReason = win ? 'win' : 'lose';
+        navigation.navigate('End', { score: score, endReason: endReason });
     };
 
     const goToMainMenu = () => {
@@ -55,7 +57,7 @@ const GameScreen = ({ route, navigation }) => {
     };
 
     const quitGame = () => {
-        navigation.navigate('End', { score: score, win: false });
+        navigation.navigate('End', { score: score, endReason: 'quit' });
     };
 
 
